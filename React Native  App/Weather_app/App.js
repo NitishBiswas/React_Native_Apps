@@ -1,11 +1,15 @@
 import React from 'react';
 import {StatusBar, View, StyleSheet} from 'react-native';
 import SplashScreen from './src/screen/SplashScreen';
+import SearchScreen from "./src/screen/SearchScreen";
+import HomeScreen from "./src/screen/HomeScreen";
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <SplashScreen />
+      {/*<SplashScreen />*/}
+      {/*<SearchScreen />*/}
+      <HomeScreen />
     </View>
   );
 };
