@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const SearchScreen = () => {
+const SearchScreen = ({navigation}) => {
   const [city, setCity] = useState('');
   const [data, setData] = useState({});
   const citySearch = text => {
@@ -21,6 +22,14 @@ const SearchScreen = () => {
       .then(data => data.json())
       .then(result => setData(result.location.address.splice(0, 9)))
       .catch(err => console.log(err.message));
+  };
+  const moveHome = async city => {
+    try {
+      await AsyncStorage.setItem('cityName', city);
+    } catch (e) {
+      console.log(e.message);
+    }
+    navigation.navigate('Home', {city: city});
   };
   return (
     <View style={styles.container}>
@@ -39,17 +48,28 @@ const SearchScreen = () => {
             onChangeText={text => citySearch(text)}
             placeholderTextColor="#fff"
           />
-          <TouchableOpacity style={styles.textInput}>
+          <TouchableOpacity
+            style={styles.textInput}
+            onPress={() => {
+              city !== '' ? moveHome(city) : null;
+            }}>
             <Text style={styles.text}>Search</Text>
           </TouchableOpacity>
         </View>
         <FlatList
           data={data}
+          keyExtractor={item => item}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity style={styles.cardView}>
-                <Text style={styles.cardText}>{item}</Text>
-              </TouchableOpacity>
+              <View>
+                {city !== '' ? (
+                  <TouchableOpacity
+                    style={styles.cardView}
+                    onPress={() => moveHome(item)}>
+                    <Text style={styles.cardText}>{item}</Text>
+                  </TouchableOpacity>
+                ) : null}
+              </View>
             );
           }}
         />
@@ -113,7 +133,7 @@ const styles = StyleSheet.create({
     color: 'white',
     padding: 10,
     fontWeight: 'bold',
-  }
+  },
 });
 
 export default SearchScreen;
