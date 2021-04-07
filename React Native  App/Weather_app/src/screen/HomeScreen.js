@@ -33,13 +33,13 @@ const HomeScreen = props => {
     )
       .then(data => data.json())
       .then(result => {
-          setWeather({
-            name: result.name,
-            temp: result.main.temp,
-            humidity: result.main.humidity,
-            description: result.weather[0].description,
-            icon: result.weather[0].icon,
-          });
+        setWeather({
+          name: result.name,
+          temp: result.main.temp,
+          humidity: result.main.humidity,
+          description: result.weather[0].description,
+          icon: result.weather[0].icon,
+        });
       })
       .catch(err => console.log(err.message));
   };
