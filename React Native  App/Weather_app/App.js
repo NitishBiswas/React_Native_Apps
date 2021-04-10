@@ -1,8 +1,9 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
-import {StatusBar, View, StyleSheet} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SplashScreen from './src/screen/SplashScreen';
 import SearchScreen from './src/screen/SearchScreen';
 import HomeScreen from './src/screen/HomeScreen';
@@ -13,8 +14,8 @@ const Tab = createBottomTabNavigator();
 const tabNavigating = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({color}) => {
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color }) => {
           let iconName;
           if (route.name === 'Home') {
             iconName = 'home';
@@ -27,7 +28,7 @@ const tabNavigating = () => {
         tabBarInactiveBackgroundColor: '#22abfd',
         tabBarActiveTintColor: '#2fff00',
         tabBarInactiveTintColor: '#ffffff',
-        tabBarLabelStyle: {fontSize: 16, fontWeight: 'bold'},
+        tabBarLabelStyle: { fontSize: 16, fontWeight: 'bold' },
       })}>
       <stack.Screen
         name="Home"
@@ -35,7 +36,7 @@ const tabNavigating = () => {
         options={{
           headerShown: false,
         }}
-        initialParams={{city: 'Dhaka'}}
+        initialParams={{ city: 'Dhaka' }}
       />
       <Tab.Screen
         name="Search"
