@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   Alert,
   Modal,
 } from 'react-native';
-import {Button} from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import * as Animatable from 'react-native-animatable';
 
@@ -31,7 +31,7 @@ class Login extends Component {
   fetchData = async () => {
     const response = await fetch('http://192.168.1.2:1111/registration');
     const information = await response.json();
-    this.setState({data: information});
+    this.setState({ data: information });
   };
   componentDidMount() {
     this.fetchData();
@@ -70,7 +70,7 @@ class Login extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <StatusBar backgroundColor="#6a19d7" barStyle="light-content" />
         <Animatable.View
           style={styles.header_login}
@@ -92,7 +92,7 @@ class Login extends Component {
             <FontAwesome5
               name="envelope"
               size={30}
-              style={{color: '#6a19d7'}}
+              style={{ color: '#6a19d7' }}
             />
             <Text
               style={{
@@ -130,7 +130,7 @@ class Login extends Component {
               <FontAwesome5
                 name="check-circle"
                 size={20}
-                style={{marginLeft: -100, color: 'green'}}
+                style={{ marginLeft: -100, color: 'green' }}
               />
             ) : null}
           </View>
@@ -141,7 +141,7 @@ class Login extends Component {
               marginLeft: 42,
               alignItems: 'center',
             }}>
-            <FontAwesome5 name="lock" size={30} style={{color: '#6a19d7'}} />
+            <FontAwesome5 name="lock" size={30} style={{ color: '#6a19d7' }} />
             <Text
               style={{
                 fontSize: 25,
@@ -179,7 +179,7 @@ class Login extends Component {
                 onPress={() => this.showPassword()}
                 name={this.state.showPasswordVisibility ? 'eye-slash' : 'eye'}
                 size={20}
-                style={{marginLeft: -120}}
+                style={{ marginLeft: -120 }}
               />
             ) : null}
           </View>
@@ -189,7 +189,7 @@ class Login extends Component {
                 name="sign-in-alt"
                 size={30}
                 color="white"
-                style={{marginRight: 10}}
+                style={{ marginRight: 10 }}
               />
             }
             onPress={() => {
@@ -230,9 +230,9 @@ class Login extends Component {
                 backgroundColor: '#6a19d7',
               },
             ]}
-            buttonStyle={{backgroundColor: '#6a19d7'}}
+            buttonStyle={{ backgroundColor: '#6a19d7' }}
             title="LogIn"
-            titleStyle={{fontSize: 20, color: 'white', fontWeight: 'bold'}}
+            titleStyle={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}
             raised={true}
           />
           <Button
@@ -241,11 +241,11 @@ class Login extends Component {
                 name="user-plus"
                 size={30}
                 color="#6a19d7"
-                style={{marginRight: 10}}
+                style={{ marginRight: 10 }}
               />
             }
             onPress={() => this.props.navigation.navigate('Registration')}
-            titleStyle={{fontSize: 20, color: '#6a19d7', fontWeight: 'bold'}}
+            titleStyle={{ fontSize: 20, color: '#6a19d7', fontWeight: 'bold' }}
             containerStyle={[
               styles.buttonStyle,
               {
@@ -259,11 +259,11 @@ class Login extends Component {
             type="outline"
             raised={true}
           />
-          <TouchableOpacity onPress={() => this.setState({modalView: true})}>
-            <View style={{alignItems: 'center', marginTop: 10}}>
-              <FontAwesome5 name="frown" size={25} style={{color: '#6a19d7'}} />
+          <TouchableOpacity onPress={() => this.setState({ modalView: true })}>
+            <View style={{ alignItems: 'center', marginTop: 10 }}>
+              <FontAwesome5 name="frown" size={25} style={{ color: '#6a19d7' }} />
               <Text
-                style={{fontSize: 20, color: '#6a19d7', fontWeight: 'bold'}}>
+                style={{ fontSize: 20, color: '#6a19d7', fontWeight: 'bold' }}>
                 Forgot Password ?
               </Text>
             </View>
@@ -273,7 +273,7 @@ class Login extends Component {
             transparent={true}
             visible={this.state.modalView}
             onRequestClose={() => {
-              this.setState({modalView: false});
+              this.setState({ modalView: false });
             }}>
             <View style={styles.modal}>
               <View
@@ -286,7 +286,7 @@ class Login extends Component {
                 <FontAwesome5
                   name="envelope"
                   size={30}
-                  style={{color: 'white'}}
+                  style={{ color: 'white' }}
                 />
                 <Text
                   style={{
@@ -328,14 +328,14 @@ class Login extends Component {
                   <FontAwesome5
                     name="check-circle"
                     size={20}
-                    style={{marginLeft: -100, color: 'green'}}
+                    style={{ marginLeft: -100, color: 'green' }}
                   />
                 ) : null}
               </View>
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                 <Button
-                  onPress={() => this.setState({modalView: false})}
+                  onPress={() => this.setState({ modalView: false })}
                   titleStyle={{
                     fontSize: 20,
                     color: '#6a19d7',
@@ -357,7 +357,7 @@ class Login extends Component {
                       name="chevron-right"
                       size={15}
                       color="#6a19d7"
-                      style={{marginLeft: 5}}
+                      style={{ marginLeft: 5 }}
                     />
                   }
                   onPress={() => {
@@ -373,8 +373,8 @@ class Login extends Component {
                     })
                       .then((response) => response.json())
                       .then((response) => {
-                        this.setState({modalSetPassword: true});
-                        this.setState({modalView: false});
+                        this.setState({ modalSetPassword: true });
+                        this.setState({ modalView: false });
                       })
                       .catch((error) => console.log(error));
                   }}
@@ -390,7 +390,7 @@ class Login extends Component {
                     borderWidth: 2,
                     width: 120,
                   }}
-                  buttonStyle={{backgroundColor: 'white', borderRadius: 30}}
+                  buttonStyle={{ backgroundColor: 'white', borderRadius: 30 }}
                   title="Send"
                   type="outline"
                   raised={true}
@@ -403,7 +403,7 @@ class Login extends Component {
             transparent={true}
             visible={this.state.modalSetPassword}
             onRequestClose={() => {
-              this.setState({modalSetPassword: false});
+              this.setState({ modalSetPassword: false });
             }}>
             <View style={styles.modal}>
               <View
@@ -413,7 +413,7 @@ class Login extends Component {
                   marginLeft: 42,
                   alignItems: 'center',
                 }}>
-                <FontAwesome5 name="lock" size={30} style={{color: 'white'}} />
+                <FontAwesome5 name="lock" size={30} style={{ color: 'white' }} />
                 <Text
                   style={{
                     fontSize: 25,
@@ -456,7 +456,7 @@ class Login extends Component {
                       this.state.showPasswordVisibility ? 'eye-slash' : 'eye'
                     }
                     size={20}
-                    style={{marginLeft: -120}}
+                    style={{ marginLeft: -120 }}
                   />
                 ) : null}
               </View>
@@ -467,7 +467,7 @@ class Login extends Component {
                   marginTop: 10,
                 }}>
                 <Button
-                  onPress={() => this.setState({modalSetPassword: false})}
+                  onPress={() => this.setState({ modalSetPassword: false })}
                   titleStyle={{
                     fontSize: 20,
                     color: '#6a19d7',
@@ -489,7 +489,7 @@ class Login extends Component {
                       name="save"
                       size={20}
                       color="#6a19d7"
-                      style={{marginRight: 5}}
+                      style={{ marginRight: 5 }}
                     />
                   }
                   onPress={() => {
@@ -509,7 +509,7 @@ class Login extends Component {
                         Alert.alert(
                           'Congratulations! \n Your new password has been saved !',
                         );
-                        this.setState({modalSetPassword: false});
+                        this.setState({ modalSetPassword: false });
                       })
                       .catch((error) => console.log(error));
                   }}
@@ -524,7 +524,7 @@ class Login extends Component {
                     borderWidth: 2,
                     width: 120,
                   }}
-                  buttonStyle={{backgroundColor: 'white', borderRadius: 30}}
+                  buttonStyle={{ backgroundColor: 'white', borderRadius: 30 }}
                   title="Save"
                   type="outline"
                   raised={true}

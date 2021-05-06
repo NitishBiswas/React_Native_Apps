@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   Modal,
   Alert,
 } from 'react-native';
-import {Button} from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import * as Animatable from 'react-native-animatable';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -38,7 +38,7 @@ class RegistrationScreen extends Component {
   fetchData = async () => {
     const response = await fetch('http://192.168.1.2:1111/registration');
     const information = await response.json();
-    this.setState({data: information});
+    this.setState({ data: information });
   };
 
   changeName(nameText) {
@@ -112,14 +112,14 @@ class RegistrationScreen extends Component {
       .then((res) => res.json())
       .then((res) => {
         console.log(res.url);
-        this.setState({img: res.url});
+        this.setState({ img: res.url });
       })
       .catch((err) => console.warn('error:' + err));
   }
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <StatusBar backgroundColor="#6a19d7" barStyle="light-content" />
         <Animatable.View
           style={styles.header_login}
@@ -139,7 +139,7 @@ class RegistrationScreen extends Component {
                 marginLeft: 42,
                 alignItems: 'center',
               }}>
-              <FontAwesome5 name="user" size={30} style={{color: '#6a19d7'}} />
+              <FontAwesome5 name="user" size={30} style={{ color: '#6a19d7' }} />
               <Text
                 style={{
                   fontSize: 25,
@@ -173,7 +173,7 @@ class RegistrationScreen extends Component {
                 <FontAwesome5
                   name="check-circle"
                   size={20}
-                  style={{marginLeft: -100, color: 'green'}}
+                  style={{ marginLeft: -100, color: 'green' }}
                 />
               ) : null}
             </View>
@@ -187,7 +187,7 @@ class RegistrationScreen extends Component {
               <FontAwesome5
                 name="envelope"
                 size={30}
-                style={{color: '#6a19d7'}}
+                style={{ color: '#6a19d7' }}
               />
               <Text
                 style={{
@@ -224,7 +224,7 @@ class RegistrationScreen extends Component {
                 <FontAwesome5
                   name="check-circle"
                   size={20}
-                  style={{marginLeft: -100, color: 'green'}}
+                  style={{ marginLeft: -100, color: 'green' }}
                 />
               ) : null}
             </View>
@@ -238,7 +238,7 @@ class RegistrationScreen extends Component {
               <FontAwesome5
                 name="address-book"
                 size={30}
-                style={{color: '#6a19d7'}}
+                style={{ color: '#6a19d7' }}
               />
               <Text
                 style={{
@@ -275,7 +275,7 @@ class RegistrationScreen extends Component {
                 <FontAwesome5
                   name="check-circle"
                   size={20}
-                  style={{marginLeft: -100, color: 'green'}}
+                  style={{ marginLeft: -100, color: 'green' }}
                 />
               ) : null}
             </View>
@@ -286,7 +286,7 @@ class RegistrationScreen extends Component {
                 marginLeft: 42,
                 alignItems: 'center',
               }}>
-              <FontAwesome5 name="lock" size={30} style={{color: '#6a19d7'}} />
+              <FontAwesome5 name="lock" size={30} style={{ color: '#6a19d7' }} />
               <Text
                 style={{
                   fontSize: 25,
@@ -324,7 +324,7 @@ class RegistrationScreen extends Component {
                   onPress={() => this.showPassword()}
                   name={this.state.showPasswordVisibility ? 'eye-slash' : 'eye'}
                   size={20}
-                  style={{marginLeft: -120}}
+                  style={{ marginLeft: -120 }}
                 />
               ) : null}
             </View>
@@ -336,11 +336,11 @@ class RegistrationScreen extends Component {
                   }
                   size={30}
                   color="#6a19d7"
-                  style={{marginRight: 10}}
+                  style={{ marginRight: 10 }}
                 />
               }
-              onPress={() => this.setState({modalVisible: true})}
-              titleStyle={{fontSize: 20, color: '#6a19d7', fontWeight: 'bold'}}
+              onPress={() => this.setState({ modalVisible: true })}
+              titleStyle={{ fontSize: 20, color: '#6a19d7', fontWeight: 'bold' }}
               containerStyle={[
                 styles.buttonStyle,
                 {
@@ -360,7 +360,7 @@ class RegistrationScreen extends Component {
                   name="save"
                   size={30}
                   color="white"
-                  style={{marginRight: 10}}
+                  style={{ marginRight: 10 }}
                 />
               }
               onPress={() => {
@@ -397,7 +397,7 @@ class RegistrationScreen extends Component {
                     .catch((error) => console.log(error));
                 }
               }}
-              titleStyle={{fontSize: 20, color: '#fff', fontWeight: 'bold'}}
+              titleStyle={{ fontSize: 20, color: '#fff', fontWeight: 'bold' }}
               containerStyle={[
                 styles.buttonStyle,
                 {
@@ -408,7 +408,7 @@ class RegistrationScreen extends Component {
                   marginBottom: 15,
                 },
               ]}
-              buttonStyle={{backgroundColor: '#6a19d7'}}
+              buttonStyle={{ backgroundColor: '#6a19d7' }}
               title="Save"
               type="outline"
               raised={true}
@@ -418,7 +418,7 @@ class RegistrationScreen extends Component {
               transparent={true}
               visible={this.state.modalVisible}
               onRequestClose={() => {
-                this.setState({modalVisible: false});
+                this.setState({ modalVisible: false });
               }}>
               <View style={styles.modalView}>
                 <Button
@@ -427,7 +427,7 @@ class RegistrationScreen extends Component {
                       name="camera-retro"
                       size={30}
                       color="white"
-                      style={{marginRight: 10}}
+                      style={{ marginRight: 10 }}
                     />
                   }
                   onPress={() => {
@@ -456,7 +456,7 @@ class RegistrationScreen extends Component {
                         }),
                       );
                   }}
-                  titleStyle={{fontSize: 20, color: '#fff', fontWeight: 'bold'}}
+                  titleStyle={{ fontSize: 20, color: '#fff', fontWeight: 'bold' }}
                   containerStyle={[
                     styles.buttonStyle,
                     {
@@ -466,7 +466,7 @@ class RegistrationScreen extends Component {
                       borderWidth: 2,
                     },
                   ]}
-                  buttonStyle={{backgroundColor: '#6a19d7'}}
+                  buttonStyle={{ backgroundColor: '#6a19d7' }}
                   title="Take Photo"
                   type="outline"
                   raised={true}
@@ -477,7 +477,7 @@ class RegistrationScreen extends Component {
                       name="images"
                       size={30}
                       color="white"
-                      style={{marginRight: 10}}
+                      style={{ marginRight: 10 }}
                     />
                   }
                   onPress={() => {
@@ -506,7 +506,7 @@ class RegistrationScreen extends Component {
                         }),
                       );
                   }}
-                  titleStyle={{fontSize: 20, color: '#fff', fontWeight: 'bold'}}
+                  titleStyle={{ fontSize: 20, color: '#fff', fontWeight: 'bold' }}
                   containerStyle={[
                     styles.buttonStyle,
                     {
@@ -516,13 +516,13 @@ class RegistrationScreen extends Component {
                       borderWidth: 2,
                     },
                   ]}
-                  buttonStyle={{backgroundColor: '#6a19d7'}}
+                  buttonStyle={{ backgroundColor: '#6a19d7' }}
                   title="Choose from gallery"
                   type="outline"
                   raised={true}
                 />
                 <Button
-                  onPress={() => this.setState({modalVisible: false})}
+                  onPress={() => this.setState({ modalVisible: false })}
                   titleStyle={{
                     fontSize: 20,
                     color: '#6a19d7',
