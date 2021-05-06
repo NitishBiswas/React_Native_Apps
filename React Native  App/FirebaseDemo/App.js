@@ -16,6 +16,7 @@ import { config } from './config';
 const App = () => {
   const [name, setName] = useState('');
   const [roll, setRoll] = useState('');
+  const [data, setData] = useState([]);
   LogBox.ignoreLogs(['Setting a timer']);
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
@@ -38,13 +39,35 @@ const App = () => {
       />
       <TouchableOpacity
         onPress={() => {
-          const id = Math.floor(Math.random() * 10000000) + 1;
-          console.log(id);
-          firebase.database().ref(`user/${id}`).set({
-            Name: name,
-            Roll: roll,
-          }).then(() => Alert.alert('Inserted!'))
-            .catch(() => console.log('Error'));
+          // var users = firebase.database().ref('user');
+          // console.log(users);
+          // users.once('value', (snapshot) => {
+          //   setData(snapshot.toJSON());
+          //   console.log(data);
+          // });
+          var userRef = firebase.database().ref(`user/${name}`);
+          var exists;
+          userRef.once('value', (snapshot) => {
+            exists = snapshot.exists();
+            setData(snapshot.toJSON());
+          })
+            .then(() => {
+              if (exists) {
+                if (data.Name.includes('N')) {
+                  console.log('Yes');
+                }
+                if (data.Name === name && data.Roll === roll) {
+                  alert('Maching');
+                }
+              } else {
+                userRef.set({
+                  Name: name,
+                  Roll: roll,
+                })
+                  .then(() => Alert.alert('Inserted!'))
+                  .catch(() => console.log('Error'));
+              }
+            })
         }}
         style={{ width: '80%' }}>
         <Text
